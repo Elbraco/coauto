@@ -1,0 +1,46 @@
+<!-- HEADER -->
+<?php require APPROOT . '/views/inc/header.phtml'; ?>
+<main class="max-container">
+
+    <!-- MODIFICATION UTILISATEUR -->
+    <h2>Modification de l'utilisateur : <?= $editprofil['firstname'] ?> <?= $editprofil['lastname'] ?></h2>
+
+
+    <form action="<?= URLROOT ?>/admin/edituser/<?= intval($editprofil['id']) ?>" method="POST" class="flex contact">
+
+        <input type="hidden" name="postId" value="<?= $editprofil['id'] ?>">
+
+        <label for="email">Email :</label>
+        <input type="email" name="email" id="email" value="<?= htmlspecialchars($editprofil['email']) ?>">
+        <?php isNotValid($data, 'error_email') ?>
+
+        <label for="firstname">Prénom :</label>
+        <input type="text" name="firstname" id="firstname" value="<?= htmlspecialchars($editprofil['firstname']) ?>">
+
+        <label for="lastname">Nom :</label>
+        <input type="text" name="lastname" id="lastname" value="<?= htmlspecialchars($editprofil['lastname']) ?>">
+
+        <label for="address">adresse :</label>
+        <input type="text" name="address" id="address" value="<?= htmlspecialchars($editprofil['address']) ?>">
+
+        <label for="zipcode">Code postal :</label>
+        <input type="text" name="zipcode" id="zipcode" value="<?= htmlspecialchars($editprofil['zipcode']) ?>">
+
+        <label for="city">Ville :</label>
+        <input type="text" name="city" id="city" value="<?= htmlspecialchars($editprofil['city']) ?>">
+
+        <label for="country">Pays :</label>
+        <input type="text" name="country" id="country" value="<?= htmlspecialchars($editprofil['country']) ?>">
+
+        <label for="phone">Téléphone :</label>
+        <input type="number" name="phone" id="phone" value="<?= htmlspecialchars($editprofil['phone']) ?>">
+
+        <label for="role">Role :</label>
+        <input type="text" name="role" id="role" value="<?= htmlspecialchars($editprofil['role']) ?>">
+
+        <input type="submit" value="Modifier" class="confirmationsubmit">
+        
+    </form>
+</main>
+<!-- FOOTER -->
+<?php require APPROOT . '/views/inc/footer.phtml'; ?>

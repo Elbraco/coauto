@@ -1,0 +1,61 @@
+<!-- HEADER -->
+<?php require APPROOT .'/views/inc/header.phtml'; ?>
+
+<main class="main-initial">
+    <section class="presta flex max-container">
+        <h2>Services</h2>
+        <ul class="nosprestations">
+            <li>
+                <ul>
+                    <li> <a href="<?= URLROOT ?>/prestations/vidange" class="prestation">Vidange <i class="fa fa-chevron-right"></i></a></li>
+                    <li> <a href="<?= URLROOT ?>/prestations/pneu" class="prestation">Pneumatique <i class="fa fa-chevron-right"></i></a></li>
+                    <li> <a href="<?= URLROOT ?>/prestations/frein" class="prestation">Freinage <i class="fa fa-chevron-right"></i></a></li>
+                    <li> <a href="<?= URLROOT ?>/prestations/clim" class="prestation">Climatisation  <i class="fa fa-chevron-right"></i></a></li>
+                    <li> <a href="<?= URLROOT ?>/prestations/suspensions" class="prestation">Suspension <i class="fa fa-chevron-right"></i></a></li>
+                    <li> <a href="<?= URLROOT ?>/prestations/navigation" class="prestation"> Autoradio & GPS <i class="fa fa-chevron-right"></i></a></li>
+                </ul>
+            </li>
+        </ul>
+        <div id="info-presta">
+            
+            <h3 class="title-h3">Entretien et réparation de votre voiture</h3>
+            
+            <p>
+            Vous recherchez un garagiste compétent, efficace et à l’écoute des besoins de votre voiture ? 
+            Obtenez une prestation de qualité effectuée à l’aide de l’expertise mécanique de nos réparateurs pour entretenir et réparer votre véhicule.
+            Que ce soit pour une vidange, révision de votre voiture, montage pneu, changement plaquettes de frein, recharge climatisation, montage auto-radio, diagnostic automobile… chaque mécanicien de chez Co' Auto y répondra avec un seul mot d’ordre, votre satisfaction. Découvrez nos prestations entretien et réparation auto. Réservez, prenez rendez-vous et payez vos prestations en nous appelant.
+            </p>
+            
+        </div>
+       
+         <article class="question-reponse">
+            <h3 class="title-h3">Questions Fréquentes</h3>
+            <div>
+                <p class="question">Pourquoi faire la révision d'une voiture ? <i class="fas fa-chevron-down"></i> </p>
+                <p class="reponse show">La révision voiture est une sécurité pour vous qui conduisez ainsi que pour les piétons qui vous croisent chaque jour. ... Comme le contrôle technique, elle consiste à faire une vérification du bon fonctionnement du véhicule, ou dit plus simplement, à entretenir une voiture.</p>
+            </div>
+            <div>
+                <p class="question">Où se trouve la pression des pneus ? <i class="fas fa-chevron-down"></i></p>
+                <p class="reponse show">Sur l'étiquette qui se trouve dans l'ouverture de la portière conducteur ; Ou sur le clapet de votre réservoir à essence ; Ou dans le manuel de bord de votre voiture.</p>
+            </div>
+            <div>
+                <p class="question">Comment bien entretenir la climatisation de sa voiture ?<i class="fas fa-chevron-down"></i></p>
+                <p class="reponse show">Il est nécessaire de le vérifier et de le nettoyer, voire de le changer tous les ans ou 15 000 km en fonction de son état. Le système de ventilation aspire d'énormes quantités d'air ambiant, jusqu'à 540 000 litres par heure. Un filtre d'habitacle usagé (en bas) peut engendrer des allergies.</p>
+            </div>
+        </article>
+       
+    </section>
+    
+
+    <section class="banner">
+        <h2>Obtenir un devis</h2>
+            <p>
+                Obtenez un devis directement en nous appelant ou par mail
+            </p>
+            <a href="<?= URLROOT ?>/pages/contact" class="icon-square icon-square-black"> Obtenir un devis</a>
+
+    </section>
+
+</main>
+<!-- FOOTER -->
+<?php require APPROOT .'/views/inc/footer.phtml'; ?>

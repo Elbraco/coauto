@@ -1,0 +1,33 @@
+<!-- HEADER -->
+<?php require APPROOT . '/views/inc/header.phtml'; ?>
+
+<main class="connect main-initial">
+    
+        
+    <!-- FORMULAIRE LOGIN -->
+        <form class="flex formulaire login" action="<?= URLROOT ?>/users/login" method="POST">
+            <h3>Se Connecter</h3>
+
+            <label for="email"> Email</label>
+            <?= isNotValid($data, 'error_email'); ?>
+            <input type="text" name="email" id="email" value="<?php if (isset($_POST['email'])) {
+                                                                    echo htmlspecialchars($_POST['email']);
+                                                                } ?>">
+
+            <label for="password"> Mot de passe</label>
+            <?= isNotValid($data, 'error_password'); ?>
+
+            <input type="password" name="password" id="password">
+            <?= isNotValid($data, 'error_connexion'); ?>
+
+            <div>
+                <input type="submit" value="Se connecter">
+                <a href="<?= URLROOT ?>/users/register" class="create-register"> Créer un compte client</a>
+            </div>
+
+        </form>
+    
+</main>
+
+<!-- FOOTER -->
+<?php require APPROOT . '/views/inc/footer.phtml'; ?>

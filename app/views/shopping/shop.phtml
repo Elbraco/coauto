@@ -1,0 +1,42 @@
+<!-- HEADER -->
+<?php require APPROOT . '/views/inc/header.phtml'; ?>
+
+<!-- MESSAGE FLASH -->
+<?php flash('login_access') ?>
+
+<main class="max-container">
+
+    <!-- Icon Shop -->
+        <a href="<?= URLROOT ?>/shopping/cart" class="cart"><i class="fa fa-shopping-cart"></i> <span class="nbItemsBasket"></span></a>   
+
+    <!-- Shopping list -->
+    <section class="shopping-list flex">
+        <h2>Boutique</h2>
+
+        <?php foreach ($allShop as $shop) : ?>
+
+            <article class="product">
+
+                <figure>
+                    <img src="<?= URLROOT ?>/public/img/shopping/<?= htmlspecialchars($shop['picture']) ?>" alt="<?= htmlspecialchars($shop['name']) ?>">
+                     <figcaption><?= htmlspecialchars($shop['name']) ?> </figcaption> 
+                     <p class="description"> <?= htmlspecialchars($shop['description']) ?> </p>
+                </figure>
+
+                <div class="list-details">
+                    <p id="price"><?= htmlspecialchars($shop['price']) ?>€</p>
+                    <button id="vente-<?= intval($shop['id']) ?>" class="addToCart icon-square icon-square-green button" data-name="<?= $shop['name'] ?>" data-price="<?= $shop['price'] ?>" data-id="<?= $shop['id'] ?>" data-picture="<?= $shop['picture'] ?>"><i class="fas fa-cart-arrow-down"></i></button>
+                </div>
+
+            </article>
+        <?php endforeach; ?>
+    </section>
+
+</main>
+
+<!-- SCRIPT -->
+<script src="<?= URLROOT ?>/public/js/classes/ShopBasket.class.js"></script>
+<script src="<?= URLROOT ?>/public/js/mainbasket.js"></script>
+
+<!-- FOOTER -->
+<?php require APPROOT . '/views/inc/footer.phtml'; ?>

@@ -1,0 +1,163 @@
+<!-- HEADER -->
+<?php require APPROOT . '/views/inc/header.phtml'; ?>
+
+<!-- MESSAGES FLASH -->
+<?php flash('update_admin'); ?>
+<?php flash('update_article'); ?>
+<?php flash('upload_picture'); ?>
+<?php flash('delete'); ?>
+
+<main class="max-container">
+
+    <h2>Administration</h2>
+
+    <nav class="add-login flex">
+        <a href="<?= URLROOT ?>/admin/addarticle">Ajouter un Article</a>
+        <a href="<?= URLROOT ?>/users/register ">Ajouter un Utilisateur</a>
+        <a href="<?= URLROOT ?>/admin/allorders">Voir toutes les commandes</a>
+    </nav>
+
+    <div>
+        <p>Vous avez <span id="numberuser">0</span> utilisateurs enregistrés</p>
+        <p>Vous avez <span id="numberarticle">0</span> articles enregistrés</p>
+        <p>Vous avez <span id="numbercontact">0</span> messages</p>
+    </div>
+
+    <!-- ARTICLES -->
+    <table class="content-table">
+
+        <caption>Articles</caption>
+
+        <thead>
+            <tr>
+                <th>Photo de l'article</th>
+                <th>Nom du produit</th>
+                <th>Description</th>
+                <th>Quantité</th>
+                <th>Prix</th>
+                <th>Modifer</th>
+                <th>Supprimer</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <?php foreach ($showarticles as $showarticle) : ?>
+                <tr>
+                    <td> <img class="image" src="<?= URLROOT ?>/img/shopping/<?= htmlspecialchars($showarticle['picture']) ?>" alt="<?= $showarticle['name'] ?>"> </td>
+                    <td class="name"> <?= htmlspecialchars($showarticle['name']) ?></td>
+                    <td> <?= htmlspecialchars($showarticle['description']) ?></td>
+                    <td> <?= htmlspecialchars($showarticle['quantity']) ?></td>
+                    <td> <?= htmlspecialchars($showarticle['price']) ?></td>
+                    <td>
+                        <a href="<?= URLROOT ?>/admin/article/<?= intval($showarticle['id']) ?>"><i class="fa fa-pencil"></i></a>
+                    </td>
+                    <td>
+                        <a href="<?= URLROOT ?>/admin/deletearticle/<?= intval($showarticle['id']) ?>"><i class="fa fa-remove"></i></a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+
+    <!-- UTILISATEURS -->
+    <table class="content-table">
+        <caption>Utilisateurs</caption>
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Prénom</th>
+                <th>Nom </th>
+                <th>Adresse</th>
+                <th>Code Postal</th>
+                <th>Ville</th>
+                <th>Pays</th>
+                <th>Phone</th>
+                <th>Role</th>
+                <th>Modifier</th>
+                <th>Supprimer</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($listUsers as $listUser) : ?>
+                
+                <tr>
+                    <td id="email"> <a href="<?= URLROOT ?>/users/profil/<?= $listUser['id'] ?>"> <?= htmlspecialchars($listUser['email']) ?> </a></td>
+                    <td> <?= htmlspecialchars($listUser['firstname']) ?></td>
+                    <td> <?= htmlspecialchars($listUser['lastname']) ?></td>
+                    <td> <?= htmlspecialchars($listUser['address']) ?></td>
+                    <td> <?= htmlspecialchars($listUser['zipcode']) ?></td>
+                    <td> <?= htmlspecialchars($listUser['city']) ?></td>
+                    <td> <?= htmlspecialchars($listUser['country']) ?></td>
+                    <td> <?= htmlspecialchars($listUser['phone']) ?></td>
+                    <td> <?= htmlspecialchars($listUser['role']) ?></td>
+                    <td>
+                        <a href="<?= URLROOT ?>/admin/edituser/<?= intval($listUser['id']) ?>"><i class="fa fa-pencil"></i></a>
+                    </td>
+                    <td>
+                        <a href=" <?= URLROOT ?>/admin/deleteuser/<?= intval($listUser['id']) ?>"><i class="fa fa-remove"></i></a>
+                    </td>
+                </tr>
+
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+
+    <!-- MESSAGES CONTACT -->
+    <table class="content-table">
+        <caption>Messages Contact</caption>
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Sujet</th>
+                <th>Message </th>
+                <th>Date</th>
+                <th>Répondre</th>
+                <th>Supprimer</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($listContact as $contact) : ?>
+                <tr>
+                    <td> <?= htmlspecialchars($contact['email']) ?></td>
+                    <td id="sujet"> <?= htmlspecialchars($contact['sujet']) ?></td>
+                    <td> <?= htmlspecialchars($contact['message_contact']) ?></td>
+                    <td> <?= formatDate($contact['date_post']) ?></td>
+
+                    <td>
+                        <a href="mailto:<?= $contact['email'] ?>"><i class="fas fa-paper-plane"></i></a>
+                    </td>
+                    <td>
+                        <a href=" <?= URLROOT ?>/admin/deleteuser/<?= intval($listUser['id']) ?>"><i class="fa fa-remove"></i></a>
+                    </td>
+
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+
+    <!-- DERNIERES COMMANDES -->
+    <section class="customers">
+        <h3> 5 dernières Commandes</h3>
+
+        <?php foreach ($listcustomers as $list) : ?>
+            <article>
+                <h4><i class="fas fa-money-check"></i> Commande n°<?= $list['id'] ?> </h4>
+                <div class="flex">
+                    <h4><i class="fas fa-clock"></i> Date : <?= formatDate($list['creationtimestamp']) ?></h4>
+                    <h4> Prix Total : <?= number_format($list['allTaxesIncluded'],2) ?> <i class="fas fa-euro-sign"></i></h4>
+                </div>
+                <a href="<?= URLROOT ?>/users/customers/<?= $list['id'] ?>" id="show-details"> Voir Détails</a>
+
+            </article>
+        <?php endforeach; ?>
+
+    </section>
+
+</main>
+
+<!-- SCRIPT -->
+<script src="<?= URLROOT ?>/public/js/admin.js"></script>
+
+<!-- FOOTER -->
+<?php require APPROOT . '/views/inc/footer.phtml'; ?>

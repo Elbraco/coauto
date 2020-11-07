@@ -1,0 +1,44 @@
+<!-- HEADER -->
+<?php include APPROOT . '/views/inc/header.phtml'; ?>
+
+<!-- MODIFICATION PROFIL -->
+<h2>Modifier mes données</h2>
+<section class="max-container form">
+
+<!-- FORMULAIRE UPDATE -->
+<form class="flex contact" action="<?= URLROOT ?>/users/editprofil/<?= intval($editprofil['id']) ?>" method="POST">
+
+    <input type="hidden" name="postId" value="<?= $editprofil['id'] ?>">
+
+    <label for="email">Email : </label>
+    <input type="email" name="email" id="email" value="<?= htmlspecialchars($editprofil['email']) ?>">
+    <?php isNotValid($data, 'error_email') ?>
+
+    <label for="firstname">Prénom : </label>
+    <input type="text" name="firstname" id="firstname" value="<?= htmlspecialchars($editprofil['firstname']) ?>">
+
+    <label for="lastname">Nom : </label>
+    <input type="text" name="lastname" id="lastname" value="<?= htmlspecialchars($editprofil['lastname']) ?>">
+
+    <label for="address">Adresse : </label>
+    <input type="text" name="address" id="address" value="<?= htmlspecialchars($editprofil['address']) ?>">
+
+    <label for="zipcode">Code Postal</label>
+    <input type="text" name="zipcode" id="zipcode" value="<?= htmlspecialchars($editprofil['zipcode']) ?>">
+
+    <label for="city">Ville : </label>
+    <input type="text" name="city" id="city" value="<?= htmlspecialchars($editprofil['city']) ?>">
+
+    <label for="country">Pays : </label>
+    <input type="text" name="country" id="country" value="<?= htmlspecialchars($editprofil['country']) ?>">
+
+    <label for="phone">Téléphone : </label>
+    <input type="number" name="phone" id="phone" value="<?= htmlspecialchars($editprofil['phone']) ?>">
+
+    <input type="submit" class="confirmationsubmit">
+
+</form>
+</section>
+
+<!-- FOOTER -->
+<?php include APPROOT . '/views/inc/footer.phtml'; ?>

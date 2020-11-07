@@ -1,0 +1,24 @@
+<!-- HEADER -->
+<?php require APPROOT . '/views/inc/header.phtml'; ?>
+<main>
+    
+    <h2>Commandes</h2>
+    
+<section class="customers">
+        <h3> Toutes les Commandes</h3>
+
+        <?php foreach ($allcustomers as $allcustomer) : ?>
+            <article>
+                <h4><i class="fas fa-money-check"></i> Commande n°<?= $allcustomer['id'] ?> </h4>
+                <div class="flex">
+                    <h4><i class="fas fa-clock"></i> Date : <?= formatDate($allcustomer['creationtimestamp']) ?></h4>
+                    <h4> Prix Total : <?= number_format($allcustomer['allTaxesIncluded'], 2) ?> <i class="fas fa-euro-sign"></i></h4>
+                </div>
+                <a href="<?= URLROOT ?>/users/customers/<?= $allcustomer['id'] ?>" id="show-details"> Voir Détails</a>
+            </article>
+        <?php endforeach; ?>
+        
+        </main>
+
+        <!-- footer -->
+<?php require APPROOT . '/views/inc/footer.phtml'; ?>

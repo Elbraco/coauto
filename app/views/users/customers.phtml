@@ -1,0 +1,75 @@
+<!-- HEADER -->
+<?php include APPROOT . '/views/inc/header.phtml'; ?>
+
+<main class="max-container">
+
+    <!-- HISTORIQUE COMMANDE -->
+    <h2>Historique Des Commandes</h2>
+
+    <?php if ($_SESSION['role'] == "ADMIN") : ?>
+        <a href="<?= URLROOT ?>/admin/index" class="icon-square icon-square-black" id='continue-shop'><i class="fas fa-arrow-alt-circle-left"></i> Retour Admin</a>
+        <section class="contactinfo">
+            <h3>Adresse de livraison</h3>
+            <p class="Cap-fullname"><?= htmlspecialchars($informations['firstname']) . ' ' . htmlspecialchars($informations['lastname']) ?></p>
+            <p><?= htmlspecialchars($informations['address']) ?></p>
+            <p><?= htmlspecialchars($informations['zipcode']) . ' ' . htmlspecialchars($informations['city']) ?></p>
+            <p><?= htmlspecialchars($informations['country']) ?></p>
+        </section>
+    <?php endif; ?>
+
+    <!-- Retour profil -->
+    <a href="<?= URLROOT ?>/users/profil/<?= intval($_SESSION['id']) ?>" class="icon-square icon-square-black" id='continue-shop'><i class="fas fa-arrow-alt-circle-left"></i> Retour Profil</a>
+
+    <section class="customers">
+        <article>
+            <h4><i class="fas fa-money-check"></i> Commande n°<?= intval($taxes['id']) ?> </h4>
+            <div class="flex">
+                <h4><i class="fas fa-clock"></i> Date : <?= formatDate($taxes['creationtimestamp']) ?></h4>
+                <h4> Prix Total : <?= number_format($taxes['allTaxesIncluded'], 2) ?> <i class="fas fa-euro-sign"></i></h4>
+            </div>
+    </section>
+
+    <!-- TABLE customers -->
+    <table class="content-table customers">
+        <thead>
+            <tr>
+                <th colspan="2">Article</th>
+                <th>Quantité</th>
+                <th>Prix</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th colspan="2"></th>
+                <th>Prix Total</th>
+                <th><span class="totalPrice"><?= number_format($taxes['totalAmount'], 2) ?></span>€</th>
+            </tr>
+            <tr>
+                <th colspan="2"></th>
+                <th>TVA -20%</th>
+                <th><span class="priceTVA"><?= number_format($taxes['taxAmount'], 2) ?></span>€</th>
+            </tr>
+            <tr>
+                <th colspan="2"></th>
+                <th>TTC</th>
+                <th><span class="priceTTC"><?= number_format($taxes['allTaxesIncluded'], 2) ?></span>€</th>
+            </tr>
+        </tfoot>
+        
+        <?php foreach ($customerslines as $customerline) : ?>
+            <tbody>
+                <tr>
+                    <td><img src="<?= URLROOT ?>/img/shopping/<?= $customerline['picture'] ?>" alt="<?= $customerline['name'] ?>"></td>
+                    <td><?= htmlspecialchars($customerline['name']) ?></td>
+                    <td><?= intval($customerline['quantityOrdered']) ?></td>
+                    <td><?= intval($customerline['priceEach']) ?>€</td>
+                </tr>
+            </tbody>
+        <?php endforeach; ?>
+
+    </table>
+    </article>
+</main>
+
+<!-- FOOTER -->
+<?php include APPROOT . '/views/inc/footer.phtml'; ?>

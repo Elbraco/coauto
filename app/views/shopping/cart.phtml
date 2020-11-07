@@ -1,0 +1,80 @@
+<!-- HEADER -->
+<?php require APPROOT . '/views/inc/header.phtml'; ?>
+
+
+<main class="max-container">
+    <!-- RECAPITULATIF COMMANDE  -->
+    <h2>Récapitulatif de la commande</h2>
+    
+        <!-- continuer shop -->
+    <div>
+    <a href="<?= URLROOT ?>/shopping/shop" class="icon-square icon-square-black" id='continue-shop'><i class="fas fa-arrow-alt-circle-left"></i> Continuer shopping</a>
+    </div>
+
+    <!-- Panier Vide -->
+    <section id="displayShoppingEmpty">
+       <h3>Ton panier </h3>
+       <article>
+           <figure>
+               <img src="<?= URLROOT ?>/public/img/shop-empty.jpg" alt="Panier Vide.">
+               </figure>
+               <p>Ton panier est vide actuellement, tu as rajouté aucun article pour le moment.</p>
+       </article>
+    </section>
+    
+    <!-- Affichage des produits -->
+    <section id="displayShopping">
+       <h3>Ton panier </h3>
+        <table class="content-table">
+            <thead>
+
+                <tr>
+                    <th colspan="2">Article</th>
+                    <th>Prix</th>
+                    <th>Quantité</th>
+                    <th>Sous-Total</th>
+                    <th></th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+                <!-- INFORMATIONS ARTICLES -->
+            </tbody>
+
+            <tfoot>
+
+                <tr>
+                    <th colspan="3"></th>
+                    <th>Prix Total</th>
+                    <th><span class="totalPrice"></span>€</th>
+                </tr>
+
+                <tr>
+                    <th colspan="3"></th>
+                    <th>TVA -20%</th>
+                    <th><span class="priceTVA"></span>€</th>
+                </tr>
+
+                <tr>
+                    <th colspan="3"></th>
+                    <th>TTC</th>
+                    <th><span class="priceTTC"></span>€</th>
+                </tr>
+
+            </tfoot>
+
+        </table>
+
+        <!-- BUTTON VALIDATE -->
+        <button id="validate">Payer <i class="fas fa-hand-point-right"></i></button>
+    </section>
+
+</main>
+
+<!-- SCRIPT -->
+<script src="<?= URLROOT ?>/public/js/classes/ShopBasket.class.js"></script>
+<script src="<?= URLROOT ?>/public/js/mainbasket.js"></script>
+
+<!-- FOOTER -->
+<?php require APPROOT . '/views/inc/footer.phtml'; ?>

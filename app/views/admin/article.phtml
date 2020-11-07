@@ -1,0 +1,32 @@
+<!-- HEADER -->
+<?php require APPROOT . '/views/inc/header.phtml'; ?>
+
+<main class="max-container">
+    
+    <!-- MODIFICATION ARTICLE -->
+    <h2>Modification de l'article : <?= htmlspecialchars($articles['name']) ?> </h2>
+
+    <form action="<?= URLROOT ?>/admin/article/<?= intval($articles['id']) ?>" class="flex contact" method="POST">
+
+        <input type="hidden" name="postId" value="<?= $articles['id'] ?>">
+
+        <label for="name">Nom de l'article : </label>
+        <input type="text" name="name" id="name" placeholder="Nom du produit" value="<?= htmlspecialchars($articles['name'])  ?>">
+
+        <label for="description">Description de l'article : </label>
+        <textarea name="description" id="description" placeholder="Description" cols="30" rows="10"> <?= htmlspecialchars($articles['description'])  ?></textarea>
+
+        <label for="quantity">Quantité :</label>
+        <input type="text" name="quantity" id="quantity" placeholder="Quantité" value="<?= htmlspecialchars($articles['quantity'])  ?>">
+
+        <label for="price">Prix en Vente :</label>
+        <input type="text" name="price" id="price" placeholder="Prix" value="<?= htmlspecialchars($articles['price'])  ?>">
+
+        <input type="submit" name="submit" value="Modifier l'article" class="confirmationsubmit">
+
+    </form>
+
+</main>
+
+<!-- FOOTER -->
+<?php require APPROOT . '/views/inc/footer.phtml'; ?>

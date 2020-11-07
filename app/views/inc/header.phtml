@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png" href="<?= URLROOT ?>/public/img/favicon.png" sizes="16x16">
+    
+    <!-- FONTS -->
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="<?= URLROOT; ?>/css/style.css">
+
+    <!-- JQUERY -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- JAVASCRIPT -->
+    <script src="<?= URLROOT ?>/public/js/utilities.js"></script>
+
+
+    <!-- TITRE -->
+    <title> <?= SITENAME  ?></title>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header class="flex topnav">
+        <!-- Message fixe covid -->
+        <aside class="message-fermeture effect-hidden"><p>En raison de la crise sanitaire, votre garage est fermé.</p></aside>
+
+        <figure>
+            <img src="<?= URLROOT ?>/public/img/logo-coauto.svg" alt="Logo du site Co'Auto">
+        </figure>
+        <nav>
+            <a href="<?= URLROOT; ?>">Home</a>
+            <a href="<?= URLROOT; ?>/shopping/shop">Boutique</a>
+            <a href="<?= URLROOT; ?>/pages/services">Services</a>
+            <a href="<?= URLROOT; ?>/pages/contact ">Contact</a>
+        </nav>
+        <nav>
+            <?php if (!array_key_exists('role', $_SESSION)) : ?>
+
+                <a href="<?= URLROOT; ?>/users/login">Connexion<i class="fa fa-sign-in"></i></Connexion></a>
+
+            <?php else : ?>
+
+                <a href="<?= URLROOT ?>/users/profil/<?= intval($_SESSION['id']) ?> " id="myprofile"><i class="fas fa-user-alt"></i> Mon profil</a>
+                <a href="<?= URLROOT; ?>/users/logout" id="logout">Déconnexion <i class="fas fa-sign-out-alt"></i></a>
+
+                <?php if ($_SESSION['role'] == "ADMIN") : ?>
+
+                    <a href="<?= URLROOT ?>/admin/index"><i class="fa fa-cogs"></i> Administration</a>
+
+                <?php endif; ?>
+
+            <?php endif; ?>
+        </nav>
+
+        <!-- ICON RESPONSIVE -->
+        <a href="#" class="icon"> <i class="fa fa-bars"></i></a>
+
+    </header>

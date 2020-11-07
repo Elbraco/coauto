@@ -1,0 +1,32 @@
+<!-- HEADER -->
+<?php require APPROOT . '/views/inc/header.phtml'; ?>
+
+<main class="max-container">
+    
+    <h2>Ajouter Un Article</h2>
+    
+    <form action="<?= URLROOT ?>/admin/addarticle" class="flex contact" method="POST" enctype="multipart/form-data">
+        
+        <?php isNotValid($data, 'error_download') ?>
+
+        <label for="name">Nom du produit : </label>
+        <input type="text" name="name" id="name">
+
+        <label for="picture">Photo : </label>
+        <input type="file" id="picture" name="picture" placeholder="photo">
+        <?php isNotValid($data, 'error_picture') ?>
+
+        <label for="description">Description : </label>
+        <textarea name="description" id="description" cols="30" rows="10"></textarea>
+
+        <label for="quantity">Quantité : </label>
+        <input type="text" name="quantity">
+
+        <label for="price"> Prix : </label>
+        <input type="text" name="price" id="price">
+
+        <input type="submit" name="submit" class="confirmationsubmit">
+    </form>
+</main>
+<!-- FOOTER -->
+<?php require APPROOT . '/views/inc/footer.phtml'; ?>

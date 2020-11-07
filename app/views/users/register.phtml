@@ -1,0 +1,75 @@
+<!-- HEADER -->
+<?php require APPROOT . '/views/inc/header.phtml'; ?>
+
+<main class="connect main-initial">
+
+
+        <!-- FORMULAIRE REGISTER -->
+        <form action="<?= URLROOT ?>/users/register" method="POST" class="flex formulaire register">
+
+            <h3>Créer un compte client</h3>
+
+            <label for="email">Email *</label>
+            <?php isNotValid($data, 'error_email'); ?>
+            <input type="text" name="email" id="email" value="<?php if (isset($_POST['email'])) {
+                                                                    echo htmlspecialchars($_POST['email']);
+                                                                } ?>">
+
+            <label for="password">Mot de passe *</label>
+            <?php isNotValid($data, 'error_password'); ?>
+            <input type="password" name="password" id="password">
+
+            <label for="confirmpassword">Confirmation du mot de passe *</label>
+            <input type="password" id="confirmpassword" name="confirmpassword">
+
+            <h3> Adresse de facturation</h3>
+
+            <label for="firstname">Prénom *</label>
+            <?php isNotValid($data, 'error_firstname'); ?>
+            <input type="text" name="firstname" id="firstname" value="<?php if (isset($_POST['firstname'])) {
+                                                                            echo htmlspecialchars($_POST['firstname']);
+                                                                        } ?>">
+
+            <label for="lastname">Nom *</label>
+            <?php isNotValid($data, 'error_lastname'); ?>
+            <input type="text" name="lastname" id="lastname" value="<?php if (isset($_POST['lastname'])) {
+                                                                        echo htmlspecialchars($_POST['lastname']);
+                                                                    } ?>">
+            <label for="address">Adresse *</label>
+
+            <?php isNotValid($data, 'error_address'); ?>
+            <input type="text" name="address" id="address" value="<?php if (isset($_POST['address'])) {
+                                                                        echo htmlspecialchars($_POST['address']);
+                                                                    } ?>">
+            <label for="zipcode">Code postal * </label>
+
+            <?php isNotValid($data, 'error_zipcode'); ?>
+            <input type="text" name="zipcode" maxlength="5" id="zipcode" value="<?php if (isset($_POST['zipcode'])) {
+                                                                                    echo htmlspecialchars($_POST['zipcode']);
+                                                                                } ?>">
+            <label for="city">Ville * </label>
+
+            <?php isNotValid($data, 'error_city'); ?>
+            <input type="text" name="city" id="city" value="<?php if (isset($_POST['city'])) {
+                                                                echo htmlspecialchars($_POST['city']);
+                                                            } ?>">
+            <label for="country">Pays * </label>
+
+            <?php isNotValid($data, 'error_country'); ?>
+            <input type="text" name="country" id="country" value="<?php if (isset($_POST['country'])) {
+                                                                        echo htmlspecialchars($_POST['country']);
+                                                                    } ?>">
+
+            <label for="phone">Téléphone * </label>
+            <?php isNotValid($data, 'error_phone'); ?>
+            <input type="number" name="phone" id="phone" value="<?php if (isset($_POST['phone'])) {
+                                                                    echo htmlspecialchars($_POST['phone']);
+                                                                } ?>">
+
+            <input type="submit" value="S'enregistrer">
+        </form>
+
+</main>
+
+<!-- FOOTER -->
+<?php require APPROOT . '/views/inc/footer.phtml'; ?>

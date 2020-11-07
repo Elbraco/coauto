@@ -1,0 +1,64 @@
+<!-- HEADER -->
+<?php require APPROOT . '/views/inc/header.phtml'; ?>
+
+<main>
+
+    <!-- CONTACT -->
+    <h2>Contact</h2>
+
+    <div class="max-container contactus flex">
+        <!-- BANNER COMMENT NOUS TROUVER -->
+        <section class="banner">
+            <h2>Comment nous trouver ...</h2>
+            <p>Vous pouvez contacter notre garage Co'auto par téléphone. Nos conseillers spécialisés sont disponibles pour répondre à vos questions et vous guider dans vos choix de 9h30 à 19h00 du lundi au vendredi et le samedi de 10h00 à 14h00</p>
+            <table>
+                <tr>
+                    <th><i class="fas fa-at"></i> Email : </th>
+                    <td> <a href="mailto:coauto@gmail.com">coauto@coauto.com</a></td>
+                </tr>
+
+            </table>
+
+            <nav class="social">
+                <a href="#"><i class="fa fa-facebook-square"></i></a>
+                <a href="#"><i class="fa fa-twitter-square"></i></a>
+                <a href="#"><i class="fa fa-instagram"></i></a>
+                <a href="#"><i class="fa fa-google"></i></a>
+            </nav>
+
+        </section>
+
+        <section>
+            <h3 class="title-h3">Nous Contacter</h3>
+
+            <!-- FORMULAIRE CONTACT -->
+            <form class="flex contact" name="formcontact" action="<?= URLROOT ?>/pages/contact" method="POST">
+
+                <label for="email">Email : </label>
+                <?php isNotValid2($data, 'error_email'); ?>
+                <input type="email" name="email" id="email" value="<?php if (isset($_POST['email'])) {
+                                                                        echo htmlspecialchars($_POST['email']);
+                                                                    } ?>">
+
+                <label for="email">Sujet : </label>
+                <?php isNotValid2($data, 'error_sujet'); ?>
+                <input type="text" name="sujet" id="sujet">
+
+
+                <label for="email">Message : </label>
+                <?php isNotValid2($data, 'error_message'); ?>
+                <textarea name="message_contact" id="text" style="resize: none;" cols="30" rows="5" placeholder="Comment pouvons-nous vous aider ?"></textarea>
+
+                <input type="submit" name="submitcontact" class="confirmationsubmit" value="Envoyer">
+
+            </form>
+        </section>
+    </div>
+
+    <!-- IFRAME -->
+    <iframe class="main-initial" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.392234218719!2d2.3056317149520456!3d48.869798807858494!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66fc4f8007851%3A0x5aa1a787f38f64f6!2sAv.%20des%20Champs-%C3%89lys%C3%A9es%2C%2075008%20Paris!5e0!3m2!1sfr!2sfr!4v1595175611173!5m2!1sfr!2sfr" aria-hidden="false" tabindex="0"></iframe>
+
+</main>
+
+<!-- FOOTER -->
+<?php require APPROOT . '/views/inc/footer.phtml'; ?>
